@@ -268,3 +268,91 @@ h3 { margin: 24px 0 8px; font-size: 17px; }
   .step { grid-template-columns: 34px 1fr; gap: 0 12px; }
   .step-n { width: 32px; height: 32px; line-height: 32px; font-size: 16px; }
 }
+
+/* ---------- Mitfahrende Navigationspille ---------- */
+
+.pill {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-14px);
+  z-index: 40;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  border-radius: 22px;
+  background: rgba(255, 253, 251, .88);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border: 1px solid rgba(207, 232, 226, .9);
+  box-shadow: 0 1px 2px rgba(28, 42, 43, .06), 0 14px 34px -16px rgba(10, 91, 86, .55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .28s ease, transform .28s ease;
+}
+.pill.da {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.pill summary {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 15px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.pill summary::-webkit-details-marker { display: none; }
+.pill summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 22px; }
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+  flex: none;
+}
+.pill-now {
+  font-size: 13.5px;
+  font-weight: bold;
+  color: var(--accent-deep);
+  white-space: nowrap;
+}
+.pill-chev {
+  width: 14px;
+  height: 14px;
+  color: var(--label);
+  flex: none;
+  transition: transform .22s ease;
+}
+.pill[open] .pill-chev { transform: rotate(180deg); }
+
+.pill-list {
+  display: grid;
+  gap: 1px;
+  padding: 4px 8px 9px;
+  margin-top: 2px;
+  border-top: 1px solid rgba(28, 42, 43, .08);
+}
+.pill-list a {
+  display: block;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 8px 12px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.pill-list a:hover { background: rgba(255, 255, 255, .9); color: var(--accent); }
+.pill-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.pill-list a.here { background: var(--fill-accent); color: var(--accent-deep); font-weight: bold; }
+
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 76px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pill, .pill-chev { transition: none; }
+}

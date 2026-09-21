@@ -14,6 +14,24 @@
 <body>
 <div class="wrap">
 
+<details class="pill" id="pill">
+  <summary>
+    <span class="pill-dot" aria-hidden="true"></span>
+    <span class="pill-now">Warum</span>
+    <svg class="pill-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <nav class="pill-list" aria-label="Abschnitte">
+      <a href="#warum">Warum</a>
+      <a href="#projekt">Unser Projekt</a>
+      <a href="#gedanke">Der Gedanke</a>
+      <a href="#weg">Der Weg</a>
+      <a href="#huerden">Die Hürden</a>
+      <a href="#umwege">Umwege</a>
+      <a href="#kontakt">Kontakt</a>
+  </nav>
+</details>
+
+
   <header class="hero">
     <p class="kicker">NÖMS Hirtenberg · Digitale Mappe</p>
     <h1>Erasmus+ an einer kleinen Schule</h1>
@@ -21,7 +39,7 @@
     auch schaffen.</p>
   </header>
 
-  <section class="card">
+  <section class="card" id="warum">
     <h2>Warum Sie das hier lesen</h2>
     <p>In ganz Niederösterreich gibt es zwei Mittelschulen mit Erasmus+. Im Süden des Landes hat
     kaum eine Schule das Programm überhaupt beantragt.</p>
@@ -39,7 +57,7 @@
     Unterschied zwischen einem Programm und einem Ausflug.</figcaption>
   </figure>
 
-  <section class="card">
+  <section class="card" id="projekt">
     <h2>Was wir gemacht haben</h2>
     <ul class="plain">
       <li>Eine Schule mit 120 Kindern im Triestingtal, ohne Projektstelle und ohne Extrabudget.</li>
@@ -58,7 +76,7 @@
     </div>
   </section>
 
-  <section class="card accent">
+  <section class="card accent" id="gedanke">
     <h2>Der Gedanke dahinter</h2>
     <p class="claim">Für die meisten Schulen ist Erasmus+ eine Belohnung.<br>Bei uns ist es ein
     Ausgleich.</p>
@@ -75,7 +93,7 @@
     niemand erklären muss, warum er nicht mitfährt.</figcaption>
   </figure>
 
-  <section class="card">
+  <section class="card" id="weg">
     <h2>Der Weg zum eigenen Erasmus+</h2>
     <p>In der Reihenfolge, in der wir es gemacht haben. Die Namen der Formulare ändern sich
     gelegentlich, der Ablauf nicht.</p>
@@ -141,7 +159,7 @@
     <figcaption>Vier Hürden, eine nach der anderen. Keine davon hat mit dem Antrag zu tun.</figcaption>
   </figure>
 
-  <section class="card">
+  <section class="card" id="huerden">
     <h2>Die vier Hürden und wie wir sie genommen haben</h2>
     <p>Der Antrag ist nicht das Schwierige. Schwierig wird es an dem Tag, an dem man den Eltern
     erklärt, dass wirklich alle mitfahren. Diese vier Stellen sind es, an denen es bei uns fast
@@ -184,7 +202,7 @@
     ob man sich so etwas zutraut.</figcaption>
   </figure>
 
-  <section class="card">
+  <section class="card" id="umwege">
     <h2>Was wir falsch gemacht haben</h2>
     <p>Wir schreiben das hin, weil Berichte, in denen alles glatt läuft, niemandem weiterhelfen.
     Wer wissen will, ob er sich das zutrauen kann, braucht die Stellen, an denen es geklemmt hat.</p>
@@ -192,7 +210,7 @@
     machen würden.]]</p>
   </section>
 
-  <section class="card accent">
+  <section class="card accent" id="kontakt">
     <h2>Sie wollen loslegen?</h2>
     <p>Wir sind ansprechbar. Wenn Sie an Ihrer Schule überlegen, Erasmus+ anzugehen, und eine
     Frage haben, die sich schneller im Gespräch klärt als per Formular, melden Sie sich einfach.</p>
@@ -204,5 +222,37 @@
   <footer>NÖMS Hirtenberg · <a href="../">Startseite</a> · <a href="../impressum.html">Impressum</a></footer>
 
 </div>
+
+<script>
+  (function () {
+    var box = document.getElementById('pill');
+    var now = box.querySelector('.pill-now');
+    var links = Array.prototype.slice.call(box.querySelectorAll('.pill-list a'));
+    var map = {}, aktiv = null;
+    links.forEach(function (a) {
+      map[a.getAttribute('href').slice(1)] = a;
+      a.addEventListener('click', function () { box.open = false; });
+    });
+    var obs = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var a = map[e.target.id];
+        if (!a || a === aktiv) return;
+        if (aktiv) aktiv.classList.remove('here');
+        a.classList.add('here');
+        aktiv = a;
+        now.textContent = a.textContent;
+      });
+    }, { rootMargin: '-72px 0px -60% 0px' });
+    document.querySelectorAll('section[id]').forEach(function (sec) { obs.observe(sec); });
+
+    var kopf = document.querySelector('.hero');
+    var sicht = new IntersectionObserver(function (e) {
+      box.classList.toggle('da', !e[0].isIntersecting);
+      if (e[0].isIntersecting) box.open = false;
+    }, { rootMargin: '-40px 0px 0px 0px' });
+    if (kopf) sicht.observe(kopf);
+  })();
+</script>
 </body>
 </html>
