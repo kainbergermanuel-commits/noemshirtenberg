@@ -131,3 +131,140 @@ footer a { color: var(--label); }
   .card { padding: 24px 20px; }
   .hero { padding: 26px 22px 30px; }
 }
+
+/* ---------- Bausteine der Mappe ---------- */
+
+.card.accent {
+  background: linear-gradient(145deg, #0A5B56 0%, #0E7F78 55%, #15A89D 100%);
+  border: none;
+  color: #FFFFFF;
+}
+.card.accent h2 { color: #FFFFFF; }
+.card.accent p { color: rgba(255, 255, 255, .93); }
+.claim {
+  font-size: clamp(19px, 3.2vw, 24px);
+  font-weight: bold;
+  line-height: 1.34;
+  letter-spacing: -.01em;
+  color: #FFFFFF !important;
+  text-wrap: balance;
+}
+
+/* Bilder */
+.fig { margin: 0; }
+.fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid var(--hairline);
+}
+.fig figcaption {
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  padding-inline: 4px;
+}
+
+/* Zahlenkacheln */
+.figures {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+.fig-n {
+  background: linear-gradient(160deg, #EFF9F7 0%, #FFFFFF 78%);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  padding: 18px 16px;
+}
+.fig-n b {
+  display: block;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: -.02em;
+  background: linear-gradient(135deg, var(--accent-deep), var(--accent-bright));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+.fig-n span {
+  display: block;
+  margin-top: 9px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+/* Schritte */
+.step {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 0 16px;
+  padding-top: 22px;
+  margin-top: 22px;
+  border-top: 1px solid var(--hairline);
+}
+.step-n {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  background: linear-gradient(140deg, var(--accent) 0%, var(--accent-bright) 100%);
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+}
+.step h3 { font-size: 17.5px; margin: 6px 0 6px; }
+.step p { margin-bottom: 10px; }
+.step p:last-child { margin-bottom: 0; }
+.hint {
+  font-size: 14.5px;
+  color: var(--accent-deep);
+  background: var(--fill-accent);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+/* Hürden */
+.huerde {
+  padding: 18px 20px;
+  margin-top: 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: linear-gradient(150deg, #F8FCFB 0%, #FFFFFF 70%);
+}
+.huerde h3 { font-size: 17px; color: var(--accent-deep); margin: 0 0 6px; }
+.huerde .frage { font-size: 15px; margin-bottom: 8px; }
+.huerde p:last-child { margin-bottom: 0; }
+
+/* Noch zu füllen */
+.offen {
+  font-size: 14.5px;
+  color: #8A6A44;
+  background: #FDEEDF;
+  border: 1px dashed #E8C9A8;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.card.accent .offen { color: #6B4A28; }
+
+.note-block {
+  margin-top: 24px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--hairline);
+  padding-top: 14px;
+}
+
+h3 { margin: 24px 0 8px; font-size: 17px; }
+
+@media (max-width: 560px) {
+  .figures { grid-template-columns: 1fr; }
+  .step { grid-template-columns: 34px 1fr; gap: 0 12px; }
+  .step-n { width: 32px; height: 32px; line-height: 32px; font-size: 16px; }
+}
