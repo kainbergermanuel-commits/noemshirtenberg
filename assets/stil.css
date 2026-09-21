@@ -428,3 +428,32 @@ section[id] { scroll-margin-top: 76px; }
   .knopf { transition: none; }
   .knopf:hover { transform: none; }
 }
+
+/* ---------- Einschweben beim Scrollen ---------- */
+/* Die Startzustände gelten nur, wenn das Skript die Klasse "anim" gesetzt hat.
+   Ohne JavaScript oder bei reduzierter Bewegung bleibt alles sofort sichtbar. */
+
+.anim .card,
+.anim .fig,
+.anim .big-link {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s cubic-bezier(.22, .68, .36, 1), transform .6s cubic-bezier(.22, .68, .36, 1);
+}
+.anim .card.sichtbar,
+.anim .fig.sichtbar,
+.anim .big-link.sichtbar {
+  opacity: 1;
+  transform: none;
+}
+.anim .fig {
+  transform: translateY(20px) scale(.985);
+  transition-duration: .7s;
+}
+.anim .fig.sichtbar { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim .card,
+  .anim .fig,
+  .anim .big-link { opacity: 1; transform: none; transition: none; }
+}
