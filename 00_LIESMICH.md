@@ -39,6 +39,10 @@ DNS beim Registrar: vier A-Records auf 185.199.108.153, 185.199.109.153, 185.199
 - **Die `[[Platzhalter]]` in der Mappe füllen.** Vier Hürden (Geld, Können, Sprache und Herkunft,
   Zutrauen), der Abschnitt „Was wir falsch gemacht haben" und die Kontaktadresse. Das Material
   kommt aus der Kollegiumsrunde, siehe Konzept im Repo `ideenboerse`.
+- **Die Mailadresse im Kontaktformular eintragen.** Sie steht an genau einer Stelle in
+  `mappe/index.html`, im Link mit der id `f-mailto`. Das Skript liest sie von dort, es gibt also
+  keine zweite Stelle zu pflegen. Solange dort `[[E-MAIL-ADRESSE]]` steht, führt der Knopf ins
+  Leere.
 - Die Platzhalter im Impressum ausfüllen. **Vor dem Verteilen der Karten**, eine öffentlich
   beworbene Seite braucht in Österreich ein vollständiges Impressum.
 - Die Mappe inhaltlich füllen, siehe Konzept im Repo `ideenboerse`.

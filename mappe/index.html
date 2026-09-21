@@ -213,10 +213,32 @@
   <section class="card accent" id="kontakt">
     <h2>Sie wollen loslegen?</h2>
     <p>Wir sind ansprechbar. Wenn Sie an Ihrer Schule überlegen, Erasmus+ anzugehen, und eine
-    Frage haben, die sich schneller im Gespräch klärt als per Formular, melden Sie sich einfach.</p>
-    <p class="offen">[[Kontaktadresse ergänzen.]]</p>
+    Frage haben, die sich schneller im Gespräch klärt als per Formular, schreiben Sie uns.</p>
     <p>Wir haben lange niemanden gehabt, den wir fragen konnten. Das ist der Grund, warum es diese
     Seite gibt.</p>
+  </section>
+
+  <section class="card">
+    <h2>Schreiben Sie uns</h2>
+    <form id="kontaktform" class="form">
+      <div class="feld">
+        <label for="f-name">Ihr Name</label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required>
+      </div>
+      <div class="feld">
+        <label for="f-schule">Ihre Schule</label>
+        <input type="text" id="f-schule" name="schule" autocomplete="organization">
+      </div>
+      <div class="feld">
+        <label for="f-text">Ihre Frage</label>
+        <textarea id="f-text" name="text" rows="5" required placeholder="Woran hängt es bei Ihnen gerade?"></textarea>
+      </div>
+      <button type="submit" class="knopf">Nachricht vorbereiten</button>
+      <p class="form-hinweis">Der Knopf öffnet Ihr Mailprogramm mit dem fertigen Text. Sie sehen
+      alles noch einmal, bevor Sie absenden. Nichts wird an Dritte übertragen und nichts wird hier
+      gespeichert.</p>
+      <p class="form-fallback">Lieber direkt? <a id="f-mailto" href="mailto:[[E-MAIL-ADRESSE]]">[[E-MAIL-ADRESSE]]</a></p>
+    </form>
   </section>
 
   <footer>NÖMS Hirtenberg · <a href="../">Startseite</a> · <a href="../impressum.html">Impressum</a></footer>
@@ -252,6 +274,25 @@
       if (e[0].isIntersecting) box.open = false;
     }, { rootMargin: '-40px 0px 0px 0px' });
     if (kopf) sicht.observe(kopf);
+  })();
+</script>
+
+<script>
+  (function () {
+    var form = document.getElementById('kontaktform');
+    if (!form) return;
+    var adresse = document.getElementById('f-mailto').getAttribute('href').replace('mailto:', '');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('f-name').value.trim();
+      var schule = document.getElementById('f-schule').value.trim();
+      var text = document.getElementById('f-text').value.trim();
+      var betreff = 'Frage zu Erasmus+' + (schule ? ' von der ' + schule : '');
+      var koerper = text + '\n\n' + name + (schule ? '\n' + schule : '');
+      window.location.href = 'mailto:' + adresse
+        + '?subject=' + encodeURIComponent(betreff)
+        + '&body=' + encodeURIComponent(koerper);
+    });
   })();
 </script>
 </body>

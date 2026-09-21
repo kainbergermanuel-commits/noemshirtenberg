@@ -364,3 +364,67 @@ section[id] { scroll-margin-top: 76px; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .pill { background: rgba(255, 253, 251, .96); }
 }
+
+/* ---------- Kontaktformular ---------- */
+
+.form { display: grid; gap: 16px; }
+.feld { display: grid; gap: 6px; }
+.feld label {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+.feld input,
+.feld textarea {
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  background: #FCFEFE;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 11px 14px;
+  width: 100%;
+  transition: border-color .16s, box-shadow .16s;
+}
+.feld textarea { resize: vertical; min-height: 120px; line-height: 1.55; }
+.feld input:hover,
+.feld textarea:hover { border-color: #CFE8E2; }
+.feld input:focus,
+.feld textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(14, 127, 120, .14);
+}
+
+.knopf {
+  font: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: linear-gradient(140deg, var(--accent-deep) 0%, var(--accent) 55%, var(--accent-bright) 100%);
+  border: none;
+  border-radius: 999px;
+  padding: 13px 26px;
+  cursor: pointer;
+  justify-self: start;
+  box-shadow: 0 10px 24px -14px rgba(10, 91, 86, .9);
+  transition: transform .16s, box-shadow .16s;
+}
+.knopf:hover { transform: translateY(-1px); box-shadow: 0 14px 28px -14px rgba(10, 91, 86, .9); }
+.knopf:active { transform: translateY(0); }
+.knopf:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.form-hinweis, .form-fallback {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+.form-fallback a { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .knopf { transition: none; }
+  .knopf:hover { transform: none; }
+}
