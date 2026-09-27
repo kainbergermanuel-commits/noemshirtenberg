@@ -457,3 +457,42 @@ section[id] { scroll-margin-top: 76px; }
   .anim .fig,
   .anim .big-link { opacity: 1; transform: none; transition: none; }
 }
+
+/* ---------- Icons an Überschriften, Hervorhebungen ---------- */
+
+.mit-ic { display: flex; align-items: center; gap: 11px; }
+.h-ic {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--fill-accent);
+  color: var(--accent);
+}
+.h-ic svg { width: 17px; height: 17px; }
+.h-ic.klein { width: 26px; height: 26px; }
+.h-ic.klein svg { width: 15px; height: 15px; }
+.card.accent .h-ic { background: rgba(255, 255, 255, .18); color: #FFFFFF; }
+
+.hl {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, rgba(21, 168, 157, .2) 60%);
+  padding: 0 .12em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.huerde .frage {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+.card a { color: var(--accent); }
+.card.accent a { color: #FFFFFF; }
+
+@media (max-width: 560px) {
+  .card h2.mit-ic { font-size: 19px; }
+  .h-ic { width: 28px; height: 28px; }
+}
