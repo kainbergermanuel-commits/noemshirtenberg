@@ -496,3 +496,34 @@ section[id] { scroll-margin-top: 76px; }
   .card h2.mit-ic { font-size: 19px; }
   .h-ic { width: 28px; height: 28px; }
 }
+
+/* ---------- Startseite: Kachel zur Mappe ---------- */
+
+.big-link.mit-pfeil {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.big-link .h-ic { width: 44px; height: 44px; background: #FFFFFF; }
+.big-link .h-ic svg { width: 22px; height: 22px; }
+.bl-text { flex: 1; min-width: 0; }
+.bl-text strong { margin-bottom: 4px; }
+.bl-text > span { display: block; line-height: 1.5; }
+.pfeil {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  transition: transform .18s;
+}
+.big-link:hover .pfeil { transform: translateX(3px); }
+
+@media (max-width: 560px) {
+  .big-link.mit-pfeil { gap: 12px; padding: 22px 20px; }
+  .big-link .h-ic { width: 38px; height: 38px; }
+  .pfeil { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pfeil { transition: none; }
+  .big-link:hover .pfeil { transform: none; }
+}
