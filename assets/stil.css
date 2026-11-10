@@ -601,6 +601,8 @@ a.knopf { display: inline-block; text-decoration: none; }
 .faq[open] summary::after, .frage-kind[open] summary::after { transform: rotate(45deg); }
 .faq summary:focus-visible, .frage-kind summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
 .faq > p, .frage-kind > p { margin: 0 0 14px; }
+.faq > p:has(+ ul) { margin-bottom: 8px; }
+.faq > ul.plain { margin-bottom: 14px; }
 
 /* Bereich für Kinder: wärmer, verspielter */
 .card.kinder {
