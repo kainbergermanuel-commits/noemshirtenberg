@@ -377,7 +377,8 @@ section[id] { scroll-margin-top: 76px; }
   color: var(--label);
 }
 .feld input,
-.feld textarea {
+.feld textarea,
+.feld select {
   font: inherit;
   font-size: 16px;
   color: var(--ink);
@@ -527,3 +528,124 @@ section[id] { scroll-margin-top: 76px; }
   .pfeil { transition: none; }
   .big-link:hover .pfeil { transform: none; }
 }
+
+/* ---------- Mappe für Familien (Tag der offenen Tür) ---------- */
+
+/* Umschalten nach Datum, gesteuert von assets/tdot.js über data-phase.
+   Ohne JavaScript gilt "vorher". */
+.nur-heute, .nur-danach { display: none; }
+[data-phase="heute"] .nur-vorher,
+[data-phase="danach"] .nur-vorher { display: none; }
+[data-phase="heute"] .nur-heute,
+[data-phase="danach"] .nur-danach { display: block; }
+h2 .nur-heute, h2 .nur-danach { display: none; }
+[data-phase="heute"] h2 .nur-heute,
+[data-phase="danach"] h2 .nur-danach { display: inline; }
+
+.umleitung {
+  margin: -6px 4px 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+.umleitung a { color: var(--accent); }
+
+.eckdaten {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #EFF9F7 0%, #FFFFFF 78%);
+  border: 1px solid var(--hairline);
+}
+.eckdaten b {
+  display: block;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+.eckdaten span { font-size: 17px; color: var(--ink); }
+
+.knopfreihe { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+a.knopf { display: inline-block; text-decoration: none; }
+.card a.knopf { color: #FFFFFF; }
+.knopf.hell, .card a.knopf.hell {
+  color: var(--accent-deep);
+  background: var(--fill-accent);
+  box-shadow: none;
+}
+
+.offen-i {
+  color: #8A6A44;
+  background: #FDEEDF;
+  border: 1px dashed #E8C9A8;
+  border-radius: 6px;
+  padding: 0 5px;
+  font-size: .92em;
+}
+.card .offen { margin-top: 14px; }
+
+/* Schwerpunkte */
+.kacheln {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.kachel {
+  padding: 16px 16px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: linear-gradient(150deg, #F8FCFB 0%, #FFFFFF 70%);
+}
+.kachel h3 { margin: 0 0 4px; font-size: 16.5px; color: var(--accent-deep); }
+.kachel p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+@media (max-width: 560px) { .kacheln { grid-template-columns: minmax(0, 1fr); } }
+
+/* Aufklappbare Fragen */
+.faq, .frage-kind {
+  border-top: 1px solid var(--hairline);
+}
+.faq:first-of-type, .frage-kind:first-of-type { margin-top: 14px; }
+.faq summary, .frage-kind summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 32px 14px 0;
+  position: relative;
+  font-weight: bold;
+}
+.faq summary::-webkit-details-marker,
+.frage-kind summary::-webkit-details-marker { display: none; }
+.faq summary::after, .frage-kind summary::after {
+  content: '+';
+  position: absolute;
+  right: 4px;
+  top: 10px;
+  font-size: 22px;
+  color: var(--accent);
+  transition: transform .2s;
+}
+.faq[open] summary::after, .frage-kind[open] summary::after { transform: rotate(45deg); }
+.faq summary:focus-visible, .frage-kind summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.faq > p, .frage-kind > p { margin: 0 0 14px; }
+
+/* Bereich für Kinder: wärmer, verspielter */
+.card.kinder {
+  background: linear-gradient(150deg, #FFF6EC 0%, #FFFFFF 65%);
+}
+.card.kinder .h-ic { background: #FDE6CF; color: #B4652A; }
+.frage-kind summary { color: var(--ink); }
+.frage-kind summary::after { color: #B4652A; }
+
+/* Checkliste zum Abhaken */
+.checkliste { list-style: none; padding: 0; margin: 0 0 6px; }
+.checkliste li { margin-bottom: 6px; }
+.checkliste label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.checkliste input { margin-top: 5px; accent-color: var(--accent); width: 17px; height: 17px; flex: none; }
+.checkliste input:checked + * , .checkliste label:has(input:checked) { color: var(--label); text-decoration: line-through; }
+
+/* Startseite: zweite, ruhigere Kachel */
+.big-link.leise { background: var(--paper); border-color: var(--hairline); }
+.big-link.leise strong { font-size: 18px; }
