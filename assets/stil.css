@@ -531,17 +531,6 @@ section[id] { scroll-margin-top: 76px; }
 
 /* ---------- Mappe für Familien (Tag der offenen Tür) ---------- */
 
-/* Umschalten nach Datum, gesteuert von assets/tdot.js über data-phase.
-   Ohne JavaScript gilt "vorher". */
-.nur-heute, .nur-danach { display: none; }
-[data-phase="heute"] .nur-vorher,
-[data-phase="danach"] .nur-vorher { display: none; }
-[data-phase="heute"] .nur-heute,
-[data-phase="danach"] .nur-danach { display: block; }
-h2 .nur-heute, h2 .nur-danach { display: none; }
-[data-phase="heute"] h2 .nur-heute,
-[data-phase="danach"] h2 .nur-danach { display: inline; }
-
 .umleitung {
   margin: -6px 4px 0;
   font-size: 14px;
@@ -549,24 +538,6 @@ h2 .nur-heute, h2 .nur-danach { display: none; }
   text-align: center;
 }
 .umleitung a { color: var(--accent); }
-
-.eckdaten {
-  display: grid;
-  gap: 10px;
-  margin: 18px 0;
-  padding: 16px 18px;
-  border-radius: 14px;
-  background: linear-gradient(160deg, #EFF9F7 0%, #FFFFFF 78%);
-  border: 1px solid var(--hairline);
-}
-.eckdaten b {
-  display: block;
-  font-size: 12px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--label);
-}
-.eckdaten span { font-size: 17px; color: var(--ink); }
 
 .knopfreihe { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 a.knopf { display: inline-block; text-decoration: none; }

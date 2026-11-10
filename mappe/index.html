@@ -4,14 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mappe für Familien · NÖMS Hirtenberg</title>
-<meta name="description" content="Alles für Familien, die die NÖMS Hirtenberg kennenlernen möchten: Tag der offenen Tür, Schwerpunkte, Anmeldung und häufige Fragen.">
+<meta name="description" content="Zum Nachlesen für Familien: was die NÖMS Hirtenberg ausmacht, unsere Schwerpunkte, die Anmeldung und häufige Fragen.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta name="theme-color" content="#0E7F78">
 <link rel="stylesheet" href="../assets/stil.css">
 <script src="../assets/anim.js" defer></script>
-<script src="../assets/tdot.js" defer></script>
 </head>
 <body>
 <div class="wrap">
@@ -19,11 +18,11 @@
 <details class="pill" id="pill">
   <summary>
     <span class="pill-dot" aria-hidden="true"></span>
-    <span class="pill-now">Besuch</span>
+    <span class="pill-now">Willkommen</span>
     <svg class="pill-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
   </summary>
   <nav class="pill-list" aria-label="Abschnitte">
-      <a href="#besuch">Besuch</a>
+      <a href="#besuch">Willkommen</a>
       <a href="#warum">Warum wir</a>
       <a href="#schwerpunkte">Schwerpunkte</a>
       <a href="#fuer-dich">Für Kinder</a>
@@ -36,58 +35,26 @@
   <header class="hero">
     <p class="kicker">NÖMS Hirtenberg · Mappe für Familien</p>
     <h1>Schön, dass Sie da sind</h1>
-    <p>Eine kleine Mittelschule im Triestingtal, in der man einander kennt. Hier finden Sie alles,
-    was Sie vor, während und nach Ihrem Besuch bei uns brauchen.</p>
+    <p>Eine kleine Mittelschule im Triestingtal, in der man einander kennt. Hier können Sie alles
+    in Ruhe nachlesen, was Sie bei Ihrem Besuch gesehen und gehört haben.</p>
   </header>
 
   <p class="umleitung">Sie haben diese Karte bei der Ideenbörse bekommen?
   <a href="../erasmus/">Hier geht es zur Erasmus-Mappe für Schulen</a>.</p>
 
-  <!-- ======================================================================
-       TAG DER OFFENEN TÜR
-       Datum und Uhrzeit stehen NUR in den data-Attributen unten.
-       Das Skript assets/tdot.js schaltet danach selbst um:
-       vorher = Einladung, am Tag = Willkommen, danach = Schnuppertermin.
-       ====================================================================== -->
-  <section class="card" id="besuch"
-           data-tdot-start="2026-11-14T14:00"
-           data-tdot-ende="2026-11-14T17:00">
-    <h2 class="mit-ic"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>
-      <span class="nur-vorher">Tag der offenen Tür</span>
-      <span class="nur-heute">Willkommen, heute ist offene Tür!</span>
-      <span class="nur-danach">Lernen Sie uns kennen</span>
-    </h2>
-
-    <div class="nur-vorher">
-      <p>Kommen Sie mit Ihrem Kind vorbei, schauen Sie in die Klassen, hören Sie die Bläserklasse
-      und stellen Sie alle Fragen, die Sie haben. Eine Anmeldung ist nicht nötig.</p>
-      <div class="eckdaten">
-        <div><b>Wann</b><span data-tdot-text>Samstag, 14. November 2026, 14 bis 17 Uhr</span></div>
-        <div><b>Wo</b><span>NÖMS Hirtenberg, Leobersdorfer Straße 66, 2552 Hirtenberg</span></div>
-      </div>
-      <p class="offen">[[Datum und Uhrzeit bestätigen. Der 14.11. stammt von einer alten
-      Demo-Seite. Anpassen nur in den data-Attributen dieses Abschnitts und in der Zeile darüber.]]</p>
-      <div class="knopfreihe">
-        <button type="button" class="knopf" id="kalender">In den Kalender eintragen</button>
-        <a class="knopf hell" href="https://www.openstreetmap.org/search?query=Leobersdorfer%20Stra%C3%9Fe%2066%2C%202552%20Hirtenberg" target="_blank" rel="noopener">Weg anzeigen</a>
-      </div>
-    </div>
-
-    <div class="nur-heute">
-      <p>Schön, dass Sie hier sind. Schauen Sie sich in Ruhe um, alle Türen sind offen und jede
-      Lehrerin und jeder Lehrer beantwortet gern Ihre Fragen.</p>
-      <p class="offen">[[Programm am Tag: Stationen mit Raum, Uhrzeiten der Auftritte, z. B.
-      „15:00 Bläserklasse im Turnsaal“]]</p>
-      <p>Für die Kinder gibt es weiter unten einen eigenen Teil: <a href="#fuer-dich">Für dich</a>.</p>
-    </div>
-
-    <div class="nur-danach">
-      <p>Den Tag der offenen Tür verpasst? Kein Problem. Wir zeigen Ihnen und Ihrem Kind die
-      Schule auch gern an einem normalen Schultag. So sehen Sie gleich, wie es bei uns wirklich
-      zugeht.</p>
-      <div class="knopfreihe">
-        <a class="knopf" href="#kontakt">Schnuppertermin anfragen</a>
-      </div>
+  <!-- ====================== DANKE FÜR IHREN BESUCH ======================
+       Die Karten werden beim Tag der offenen Tür ausgegeben. Die Seite ist also
+       keine Einladung, sondern das, was man nach dem Besuch nachliest. -->
+  <section class="card" id="besuch">
+    <h2 class="mit-ic"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4.5 20 11"/><path d="M6 9.8V19.5h12V9.8"/><path d="M10 19.5v-5h4v5"/></svg></span><span>Danke für Ihren Besuch</span></h2>
+    <p>Schön, dass Sie sich die Zeit genommen haben, uns kennenzulernen. An einem Nachmittag sieht
+    man vieles, aber nicht alles. Darum steht hier noch einmal in Ruhe, was uns ausmacht, wie die
+    Anmeldung abläuft und was Eltern uns am häufigsten fragen.</p>
+    <p>Wer die Schule noch einmal an einem ganz normalen Schultag erleben möchte, ist herzlich
+    willkommen. Dann sehen Sie und Ihr Kind, wie es bei uns wirklich zugeht.</p>
+    <div class="knopfreihe">
+      <a class="knopf" href="#kontakt">Schnuppertermin anfragen</a>
+      <a class="knopf hell" href="#anmeldung">Zur Anmeldung</a>
     </div>
   </section>
 
@@ -166,7 +133,8 @@
       <span class="step-n">1</span>
       <div>
         <h3>Die Schule kennenlernen</h3>
-        <p>Am Tag der offenen Tür oder bei einem Schnuppertermin, den Sie mit uns ausmachen.</p>
+        <p>Das haben Sie schon gemacht. Wer noch einmal schauen möchte, macht mit uns einen
+        Schnuppertermin aus.</p>
       </div>
     </div>
     <div class="step">
