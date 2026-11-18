@@ -42,13 +42,6 @@
   <p class="umleitung">Sie haben diese Karte bei der Ideenbörse bekommen?
   <a href="../erasmus/">Hier geht es zur Erasmus-Mappe für Schulen</a>.</p>
 
-  <!-- Kurzer Loop (8 s, stumm). Quelle: Coding/Websites/noemshirtenberg-clip (HyperFrames).
-       Quer ab 561 px, hoch darunter. Ohne JavaScript oder bei reduzierter Bewegung
-       bleibt es beim Standbild. Reine Deko, der Inhalt steht in der Karte darunter. -->
-  <figure class="film" aria-hidden="true">
-    <video muted loop playsinline preload="none" poster="media/danke-quer.jpg"></video>
-  </figure>
-
   <!-- ====================== DANKE FÜR IHREN BESUCH ======================
        Die Karten werden beim Tag der offenen Tür ausgegeben. Die Seite ist also
        keine Einladung, sondern das, was man nach dem Besuch nachliest. -->
@@ -319,19 +312,6 @@
         + '?subject=' + encodeURIComponent(anliegen)
         + '&body=' + encodeURIComponent(text + '\n\n' + name);
     });
-  })();
-
-  // Film oben: passende Fassung wählen, nur bei erlaubter Bewegung abspielen
-  (function () {
-    var v = document.querySelector('.film video');
-    if (!v) return;
-    var hoch = window.matchMedia('(max-width: 560px)').matches;
-    var art = hoch ? 'hoch' : 'quer';
-    v.poster = 'media/danke-' + art + '.jpg';
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    v.src = 'media/danke-' + art + '.mp4';
-    var p = v.play();
-    if (p && p.catch) p.catch(function () {});
   })();
 
   // Erklärvideo: am Handy die Hochformat-Fassung laden
