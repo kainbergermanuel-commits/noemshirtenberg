@@ -42,6 +42,13 @@
   <p class="umleitung">Sie haben diese Karte bei der Ideenbörse bekommen?
   <a href="../erasmus/">Hier geht es zur Erasmus-Mappe für Schulen</a>.</p>
 
+  <!-- Kurzer Loop (8 s, stumm). Quelle: Coding/Websites/noemshirtenberg-clip (HyperFrames).
+       Quer ab 561 px, hoch darunter. Ohne JavaScript oder bei reduzierter Bewegung
+       bleibt es beim Standbild. Reine Deko, der Inhalt steht in der Karte darunter. -->
+  <figure class="film" aria-hidden="true">
+    <video muted loop playsinline preload="none" poster="media/danke-quer.jpg"></video>
+  </figure>
+
   <!-- ====================== DANKE FÜR IHREN BESUCH ======================
        Die Karten werden beim Tag der offenen Tür ausgegeben. Die Seite ist also
        keine Einladung, sondern das, was man nach dem Besuch nachliest. -->
@@ -56,6 +63,21 @@
       <a class="knopf" href="#kontakt">Schnuppertermin anfragen</a>
       <a class="knopf hell" href="#anmeldung">Zur Anmeldung</a>
     </div>
+  </section>
+
+  <!-- ====================== ERKLÄRVIDEO ======================
+       66 s mit selbst erzeugter Musik. Quelle: Coding/Websites/noemshirtenberg-clip/erklaer-*.
+       Startet nur auf Klick. Quer ab 561 px, hoch darunter (Wahl per Skript unten).
+       Bei Textänderungen in der Mappe das Video neu rendern. -->
+  <section class="card" id="video">
+    <h2 class="mit-ic"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m10 9.5 4.5 2.5-4.5 2.5z"/></svg></span><span>Die Mappe in einer Minute</span></h2>
+    <p>Alles Wichtige auf einen Blick, als kurzes Video mit leiser Musik. Den ausführlichen Text finden Sie darunter.</p>
+    <figure class="film film-erklaer">
+      <video controls playsinline preload="none" poster="media/erklaer-quer.jpg"
+        aria-label="Erklärvideo: die NÖMS Hirtenberg in einer Minute">
+        <source src="media/erklaer-quer.mp4" type="video/mp4">
+      </video>
+    </figure>
   </section>
 
   <!-- ====================== WARUM WIR ====================== -->
@@ -92,9 +114,6 @@
       <div class="kachel"><h3>Lesen</h3><p>Schulbibliothek, Lesestunden und Lesepatenschaften. Wer gern liest, lernt leichter.</p></div>
       <div class="kachel"><h3>Berufsorientierung</h3><p>Ab der 3. Klasse: Schnuppertage, Betriebsbesuche und Begleitung beim nächsten Schritt.</p></div>
     </div>
-    <p class="offen">[[Bitte prüfen: Die Texte stammen aus dem Entwurf der großen Schulseite.
-    Stimmen Bläserklasse mit Musikschule, das jährliche Musical und Berufsorientierung ab der
-    3. Klasse so?]]</p>
   </section>
 
   <!-- ====================== FÜR KINDER ====================== -->
@@ -300,6 +319,28 @@
         + '?subject=' + encodeURIComponent(anliegen)
         + '&body=' + encodeURIComponent(text + '\n\n' + name);
     });
+  })();
+
+  // Film oben: passende Fassung wählen, nur bei erlaubter Bewegung abspielen
+  (function () {
+    var v = document.querySelector('.film video');
+    if (!v) return;
+    var hoch = window.matchMedia('(max-width: 560px)').matches;
+    var art = hoch ? 'hoch' : 'quer';
+    v.poster = 'media/danke-' + art + '.jpg';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    v.src = 'media/danke-' + art + '.mp4';
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  })();
+
+  // Erklärvideo: am Handy die Hochformat-Fassung laden
+  (function () {
+    var v = document.querySelector('.film-erklaer video');
+    if (!v || !window.matchMedia('(max-width: 560px)').matches) return;
+    v.poster = 'media/erklaer-hoch.jpg';
+    v.querySelector('source').src = 'media/erklaer-hoch.mp4';
+    v.load();
   })();
 </script>
 </body>
