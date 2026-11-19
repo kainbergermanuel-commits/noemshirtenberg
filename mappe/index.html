@@ -59,15 +59,16 @@
   </section>
 
   <!-- ====================== ERKLÄRVIDEO ======================
-       Version 2 (52,5 s, Skill saas-animation), Musik + Geräusche selbst erzeugt. Quelle: Coding/Websites/noemshirtenberg-clip/willkommen-v2/willkommen.html (?fmt=hoch fürs Hochformat).
-       Startet nur auf Klick. Quer ab 561 px, hoch darunter (Wahl per Skript unten).
+       Version 3 (37 s, „ein Container“, 60 fps, nahtlose Schleife). Quelle: Coding/Websites/noemshirtenberg-clip/v3/mappe.html,
+       gerendert über HyperFrames in noemshirtenberg-clip/hf3-quer|hf3-hoch. Läuft stumm als Schleife (nicht bei reduzierter Bewegung).
+       Quer ab 561 px, hoch darunter (Wahl per Skript unten).
        Bei Textänderungen in der Mappe das Video neu rendern. -->
   <section class="card" id="video">
     <h2 class="mit-ic"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m10 9.5 4.5 2.5-4.5 2.5z"/></svg></span><span>Die Mappe in einer Minute</span></h2>
-    <p>Alles Wichtige auf einen Blick, als kurzes Video mit leiser Musik. Den ausführlichen Text finden Sie darunter.</p>
+    <p>Alles Wichtige auf einen Blick. Das Video läuft ohne Ton, über die Steuerung können Sie leise Musik dazuschalten. Den ausführlichen Text finden Sie darunter.</p>
     <figure class="film film-erklaer">
-      <video controls playsinline preload="none" poster="media/erklaer-quer.jpg"
-        aria-label="Erklärvideo: die NÖMS Hirtenberg in einer Minute">
+      <video controls playsinline muted loop autoplay preload="auto" poster="media/erklaer-quer.jpg"
+        aria-label="Erklärvideo: die NÖMS Hirtenberg in 37 Sekunden, läuft als Schleife ohne Ton">
         <source src="media/erklaer-quer.mp4" type="video/mp4">
       </video>
     </figure>
@@ -317,7 +318,10 @@
   // Erklärvideo: am Handy die Hochformat-Fassung laden
   (function () {
     var v = document.querySelector('.film-erklaer video');
-    if (!v || !window.matchMedia('(max-width: 560px)').matches) return;
+    if (!v) return;
+    // bei reduzierter Bewegung nicht von selbst abspielen
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); }
+    if (!window.matchMedia('(max-width: 560px)').matches) return;
     v.poster = 'media/erklaer-hoch.jpg';
     v.querySelector('source').src = 'media/erklaer-hoch.mp4';
     v.load();
